@@ -5,14 +5,9 @@ app = Flask(__name__)
 app.secret_key = "tic_tac_toe_secret_key"
 
 WINNING_COMBINATIONS = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6]
 ]
 
 
@@ -44,8 +39,10 @@ def home():
             winner = ""
 
             for combination in WINNING_COMBINATIONS:
-                if all(board[i] == session["current_player"]
-                       for i in combination):
+                if all(
+                    board[i] == session["current_player"]
+                    for i in combination
+                ):
                     winner = session["current_player"]
                     break
 
